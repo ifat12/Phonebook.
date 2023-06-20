@@ -1,0 +1,69 @@
+
+
+
+import java.util.Scanner;
+
+public class test {
+   
+    public static void main(String[] args) {
+        
+        
+        
+        Scanner input = new Scanner(System.in);
+        PhoneBook obj = new PhoneBook();
+        System.out.println("\t\t\t\t==============================");
+        System.out.println("\t\t\t\t=      PHONEBOOK MANAGER     =");
+        System.out.println("\t\t\t\t==============================");
+        int n=1,i,j,temp;
+        int temp1=0,temp2=1,k;
+   
+        
+       
+  while(n!=0){
+      
+        
+        System.out.println("===============================");
+        System.out.println("= 1.Add a new contect number  =");
+        System.out.println("= 2.Search a contact          =");
+        System.out.println("= 3.Edit a contact            =");
+        System.out.println("= 4.Delete a contact          =");
+        System.out.println("= 5.Display all contact list  =");
+        System.out.println("= 6.Delete all contact        =");
+        System.out.println("= 0.Exit                      =");                   
+        System.out.println("===============================");
+        System.out.print("Enter the choice: ");
+        n=input.nextInt();
+        if(n==1){
+            obj.Add(temp1, temp2);
+            temp1++;
+            temp2++;
+        }
+     else if(n==2){
+
+         obj.Search(temp1);
+     }
+       
+     else if(n==3){
+
+     obj.Edit(temp1);
+     }
+     else if(n==4){
+       k=obj.Delete(temp1);
+       if(k==1){
+            temp1--;
+            temp2--;
+       }
+     }
+
+     else if(n==5){
+        obj.Display(temp1);
+          }
+     else if(n==6){
+         temp1=0;
+         temp2=1;
+         System.out.println("Succesfully Deleted All Information...");
+     }
+
+    }
+}
+}

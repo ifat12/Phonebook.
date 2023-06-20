@@ -1,0 +1,143 @@
+
+
+
+import java.util.Scanner;
+
+
+public class PhoneBook {
+    private String name;
+    private String email;
+    private String phone;
+    PhoneBook[] list = new PhoneBook[100];
+    
+
+    public void Add(int temp1,int temp2){
+           Scanner input = new Scanner(System.in);
+                int i; 
+                
+                for(i=temp1;i<temp2;i++){
+                list[i]=new PhoneBook();
+                System.out.print("Enter a Name: ");
+                list[i].name=input.nextLine();
+                System.out.print("Enter a Email: ");      
+                list[i].email=input.nextLine();
+                System.out.print("Enter a Phone: ");
+                list[i].phone=input.nextLine();
+                
+
+                         
+            }
+            System.out.println("Successfully Added....\n");
+
+    }
+    public void Search(int temp1){
+        Scanner input = new Scanner(System.in);
+         System.out.print("Enter the phone number for searching: ");
+         
+         String phone1=input.nextLine();
+         String sphone;
+         int temp=0,i;
+         for(i=0;i<temp1;i++){
+             sphone=list[i].phone;
+             if(phone1.equals(sphone)){
+              Display(list[i].name,list[i].email,list[i].phone);
+              temp=1;
+             }
+
+         }
+            if(temp==0){
+                 System.out.println("Not found!!!\n");
+                 
+             }
+    }
+    public void Edit(int temp1){
+        Scanner input = new Scanner(System.in);
+         System.out.print("Enter phone number to edit: ");
+         String phone1=input.nextLine();
+          int  temp=0,i;
+          String sphone;
+         for(i=0;i<temp1;i++){
+             sphone=list[i].phone;
+             if(phone1.equals(sphone)){
+               
+                Display(list[i].name,list[i].email,list[i].phone);
+                System.out.print("Enter a new name: ");
+                list[i].name=input.nextLine();
+                System.out.print("Enter a new Email: ");      
+                list[i].email=input.nextLine();
+                System.out.print("Enter a new Phone Number: ");
+                list[i].phone=input.nextLine();
+                
+                 System.out.println("Successfully Edited\n");
+                 temp=1;
+             }
+             
+         }
+         
+          if(temp==0){
+              System.out.println("Wrong Number!!! Try again later....");
+          }   
+    }
+    public int Delete(int temp1){
+        Scanner input = new Scanner(System.in);
+         System.out.print("Enter phone number to Delete: ");
+         
+         String phone1=input.nextLine();
+         int temp=0,i,j;
+         String sphone;
+         for(i=0;i<temp1;i++){
+             sphone=list[i].phone;
+             if(phone1.equals(sphone)){
+                Display(list[i].name,list[i].email,list[i].phone);
+                for(j=i;j<temp1;j++){
+                    list[j]=list[j+1];
+                    temp=1;
+                }
+                if(temp==1){
+                     System.out.println("Successfully Deleted Item\n");
+                     return 1;
+
+                }
+               
+             }
+             
+         }
+         
+          if(temp==0){
+              System.out.println("Wrong Number!!! Try again later....");
+               return 0;
+          }
+          return 0;
+    }
+    public void Display(int temp1){
+             System.out.println("======================");
+             System.out.println("=     Contact List   =");
+             System.out.println("======================");
+         int k=1,i;
+         if(temp1==0){
+             System.out.println("Empty List!!!!");
+         }
+         else{
+             
+         System.out.println("--------------------------------------");
+          for(i=0;i<temp1;i++){
+              System.out.println("=================================");
+              System.out.printf("Person %d:\n",k);
+              System.out.println("Name: "+list[i].name);
+              System.out.println("Email: "+list[i].email);
+              System.out.println("Phone: "+list[i].phone);
+              System.out.println("=================================");
+              k++;
+          }
+          System.out.println("--------------------------------------");
+         }
+    }
+    public void Display(String name,String email,String phone){
+              System.out.println("=================================");
+              System.out.println("Name: "+name);
+              System.out.println("Email: "+email);
+              System.out.println("Phone: "+phone);
+              System.out.println("=================================");
+    }
+
+}
